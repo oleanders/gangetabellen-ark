@@ -1,0 +1,25 @@
+name: Build and deploy to Firebase
+
+on: 
+  push: 
+    branches: 
+      - main
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Build
+        run: |
+          npm i create-elm-app 
+          npx elm-app build
+
+      - name: Publish web
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only "hosting:gangeark"
+        env:
+          FIREBASE_TOKEN: ${{secrets.firebase_token}}
+          PROJECT_ID: eidjord
