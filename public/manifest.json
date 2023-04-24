@@ -1,6 +1,6 @@
 {
-  "short_name": "Elm App",
-  "name": "Create Elm App Sample",
+  "short_name": "Gangetabellen",
+  "name": "Her kan du lage ark med gangestykker som kan skrives ut",
   "icons": [
     {
       "src": "favicon.ico",
