@@ -2,6 +2,7 @@ module Tests exposing (..)
 
 import Test exposing (..)
 import Expect
+import Main
 
 
 -- Check out https://package.elm-lang.org/packages/elm-explorations/test/latest to learn more about testing in Elm!
@@ -16,7 +17,10 @@ all =
         , test "String.left" <|
             \_ ->
                 Expect.equal "a" (String.left 1 "abcdefg")
-        , test "This test should fail" <|
+        , test "Valgt gangetabell kan fjernes" <|
             \_ ->
-                Expect.fail "failed as expected!"
+                Main.update (Main.ValgtTabell 7 False) Main.initModel
+                    |> Tuple.first
+                    |> .tabeller
+                    |> Expect.equal [ 6, 8, 9 ]
         ]
